@@ -1,4 +1,4 @@
-<?php 
+<?php
 header('Content-Type: text/html; charset=iso-8859-2');
 $menus = [
     'Ellátás',
@@ -11,18 +11,21 @@ $menus = [
 $NFAsubmenus = [
     'EHT',
     'NYDM'
-]; 
-
-if($params['tipus'] === "Felhasználó"): 
+];
 ?>
-<nav class="navbar navbar-expand-md"
-	style="brand-hover-color: #214263; background-color: #214263;">
+<!--  fõmenü -->
+<nav class="navbar navbar-expand-xxl bg-light">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="/" disabled="disabled">Fõmenü</a>
+		<a class="navbar-brand" style="cursor: default;">Fõmenü</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-2">
     <?php
-    
     foreach ($menus as $menu) {
         if ($menu == $menus[1]) {
             ?>
@@ -96,110 +99,27 @@ if($params['tipus'] === "Felhasználó"):
 								adatok karbantartása</a></li>
 					</ul></li>
 						<?php
-            }
-            ?>
+        }
+        ?>
                  	<?php } ?>
                 <li class="nav-item"><a class="nav-link"
 					href="changepassword.php">Jelszó módosítás</a></li>
-
 			</ul>
 		</div>
 	</div>
-</nav>
-<?php else: ?>
-<nav class="navbar navbar-expand-lg bg-light"
-	style="brand-hover-color: #214263">
-	<div class="container-fluid">
-		<a class="navbar-brand">Fõmenü</a>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                	<?php
-
-foreach ($menus as $menu) {
-            if ($menu == $menus[1]) {
-                ?>
-				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
-					href="#" role="button" data-bs-toggle="dropdown"
-					aria-expanded="false">
-                		<?= $menu;?>
-              		</a>
-					<ul class="dropdown-menu">
-                		<?php foreach($NFAsubmenus as $NFAsubmenu){ ?>
-                	<li class="nav-item"><a class="dropdown-item" href="#"><?= $NFAsubmenu; ?></a>
-						</li>
-                	<?php } ?>
-               		</ul></li>
-				<li class="nav-item dropdown"></li>
-                 	<?php } elseif ($menu == $menus[0]) { ?>
-				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
-					href="#" role="button" data-bs-toggle="dropdown"
-					aria-expanded="false">
-                		<?= $menu;?>
-                	</a>
-					<ul class="dropdown-menu">
-						<li class="nav-item"><a class="dropdown-item" href="#">A</a></li>
-						<li class="nav-item"><a class="dropdown-item" href="#">B</a></li>
-						<li class="nav-item"><a class="dropdown-item" href="#">C</a></li>
-					</ul></li>
-              	<?php } elseif ($menu == $menus[2]) { ?>
-              	<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" role="button"
-					data-bs-toggle="dropdown" aria-expanded="false">
-                		<?= $menu;?>
-                	</a>
-					<ul class="dropdown-menu">
-						<li class="nav-item"><a class="dropdown-item" href="#">A</a></li>
-						<li class="nav-item"><a class="dropdown-item" href="#">B</a></li>
-						<li class="nav-item"><a class="dropdown-item" href="#">C</a></li>
-					</ul></li>
-              	<?php } elseif ($menu == $menus[3]) { ?>
-              	<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" role="button"
-					data-bs-toggle="dropdown" aria-expanded="false">
-                		<?= $menu;?>
-                	</a>
-					<ul class="dropdown-menu">
-						<li class="nav-item"><a class="dropdown-item" href="#">A</a></li>
-						<li class="nav-item"><a class="dropdown-item" href="#">B</a></li>
-						<li class="nav-item"><a class="dropdown-item" href="#">C</a></li>
-					</ul></li>
-              	<?php } elseif ($menu == $menus[4]) { ?>
-              	<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" role="button"
-					data-bs-toggle="dropdown" aria-expanded="false">
-                		<?= $menu;?>
-                	</a>
-					<ul class="dropdown-menu">
-						<li class="nav-item"><a class="dropdown-item" href="client.php">Új ügyféll</a></li>
-						<li class="nav-item"><a class="dropdown-item" href="#">Ügyfél
-								adatok karbantartása</a></li>
-					</ul></li>
-              	<?php } elseif ($menu == $menus[5]) { ?>
-              	<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" role="button"
-					data-bs-toggle="dropdown" aria-expanded="false">
-                		<?= $menu;?>
-                	</a>
-					<ul class="dropdown-menu">
-						<li class="nav-item"><a class="dropdown-item"
-							href="newemployer.php">új munkáltató</a></li>
-						<li class="nav-item"><a class="dropdown-item" href="#">Munkáltatói
-								adatok karbantartása</a></li>
-					</ul></li>
-						<?php
-            }
-            ?>
-                 	<?php } ?>
-                    <li class="nav-item"><a class="nav-link"
-					href="changepassword.php">Jelszó módosítás</a></li>
-			</ul>
-		</div>
-	</div>
-	<nav class="navbar navbar-expand-lg bg-light"
+	<!--  admin menü -->
+	<?php if($_SESSION['accounttype'] === "Rendszergazda"): ?>
+	<nav class="navbar navbar-expand-xl bg-light"
 		style="brand-hover-color: #214263">
-		<div class="container-fluid">
+		<div class="container">
 			<a class="navbar-brand">Admin menü</a>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent1">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
 						href="register.php">Új felhasználnó hozzáadása</a></li>
@@ -208,10 +128,11 @@ foreach ($menus as $menu) {
 				</ul>
 			</div>
 		</div>
-	</nav>
+<?php else: ?>
 </nav>
-<?php endif; ?> 
-<?php 
-var_dump($_COOKIE) ;
-var_dump($_SESSION) ;
+<?php endif; ?>
+
+<?php
+var_dump($_COOKIE);
+var_dump($_SESSION['accounttype']);
 ?>

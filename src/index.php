@@ -34,8 +34,7 @@ function menu()
     if (isLoggedIn()) {
         echo compileTemplate('wrapper.phtml', [
             'content' => compileTemplate('mainMenu.phtml', []),
-            'bejelentkezve' => true,
-            'tipus' => $_SESSION['accounttype']
+            'bejelentkezve' => true
         ]);
     } else {
         loginForm();
@@ -51,7 +50,7 @@ function compileTemplate($filePath, $params = []): string
 
 function notFoundHandler()
 {
-    echo "Oldal nem tal√°lhat√≥";
+    echo "Oldal nem tal·lhatÛ";
 }
 
 function isLoggedIn(): bool
