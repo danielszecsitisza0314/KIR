@@ -1,0 +1,21 @@
+<?php 
+header('Content-Type: text/html; charset=iso-8859-2');
+?>
+
+<div class="popup-container" id="login-popup">
+	<div class="popup">
+		<h2>
+			<span>Bejelentkezés</span>
+			<button type="reset" onclick="popup('login-popup')" class="close"
+				style="border: none; cursor: default; font-size: 18px; font-weight: 550; color: #797775;">X</button>
+		</h2>
+		<form action="mainmenu" method="POST" >
+			<input type="text" placeholder="Felhasználó név" name="username"
+				class="form-control"> <br> <input type="password"
+				placeholder="Jelszó" name="pw" class="form-control"> <br>
+			<button type="submit" class="btn btn-info">Bejelentkezés</button>
+		</form>
+	</div>
+</div>
+
+
