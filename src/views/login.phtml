@@ -1,4 +1,4 @@
-<?php 
+<?php
 header('Content-Type: text/html; charset=iso-8859-2');
 ?>
 
@@ -9,10 +9,16 @@ header('Content-Type: text/html; charset=iso-8859-2');
 			<button type="reset" onclick="popup('login-popup')" class="close"
 				style="border: none; cursor: default; font-size: 18px; font-weight: 550; color: #797775;">X</button>
 		</h2>
-		<form action="mainmenu" method="POST" >
-			<input type="text" placeholder="Felhasználó név" name="username"
-				class="form-control"> <br> <input type="password"
-				placeholder="Jelszó" name="pw" class="form-control"> <br>
+		<form action="mainmenu" method="POST">
+			<div class="input-group">
+				<input type="text" placeholder="Felhasználó név" name="username"
+					class="form-control">
+			</div>
+			<div class="input-group">
+				<input type="password" placeholder="Jelszó" name="pw"
+					class="form-control">
+			</div>
+			<br>
 			<button type="submit" class="btn btn-info">Bejelentkezés</button>
 		</form>
 	</div>
