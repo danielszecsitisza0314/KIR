@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: text/html; charset=iso-8859-2');
+require_once 'passwordchange.phtml';
 $menus = [
     'Ellátás',
     'NFA',
@@ -102,8 +103,10 @@ $NFAsubmenus = [
         }
         ?>
                  	<?php } ?>
-                <li class="nav-item"><a class="nav-link"
-					href="changepassword.php">Jelszó módosítás</a></li>
+                <li class="nav-item"><a href=""
+					class=" btn rounded-3 add-new-client-btn" id=""
+					data-bs-toggle="modal" data-bs-target="#changepassword">Jelszó
+						módosítása</a></li>
 			</ul>
 		</div>
 	</div>
@@ -132,9 +135,10 @@ $NFAsubmenus = [
 </nav>
 <?php else: ?>
 </nav>
-<?php endif; ?>
-
 <?php
+
+endif;
+
 var_dump($_COOKIE);
 var_dump($_SESSION['accounttype']);
 ?>

@@ -12,7 +12,8 @@ $routes = [
     ],
     'POST' => [
         "/mainmenu" => 'loginhandler',
-        "/logout" => 'logoutHandler'
+        "/logout" => 'logoutHandler',
+        "/changepassword" => 'changepassword'
     ]
 ];
 session_start();
@@ -27,6 +28,11 @@ function loginForm()
         'content' => compileTemplate('login.phtml', []),
         'bejelentkezve' => false
     ]);
+}
+
+function changepassword()
+{
+    
 }
 
 function menu()
