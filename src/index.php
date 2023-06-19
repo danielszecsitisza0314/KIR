@@ -30,11 +30,6 @@ function loginForm()
     ]);
 }
 
-function changepassword()
-{
-    
-}
-
 function menu()
 {
     if (isLoggedIn()) {
@@ -93,6 +88,7 @@ function loginhandler()
     $_SESSION['userID'] = $user['id'];
     $_SESSION['username'] = $user['user_name'];
     $_SESSION['fullname'] = $user['full_name'];
+    $_SESSION['pw'] = $user['password'];
     $_SESSION['email'] = $user['email'];
     $_SESSION['governmentoffice'] = $user['government_office'];
     $_SESSION['accounttype'] = $user['account_type'];
@@ -106,7 +102,21 @@ function loginhandler()
     } else {
         header('Location: ' . 'mainmenu' . '&info=accountIsNotActive');
     }
-    
+}
+
+function changepassword()
+{
+    if (! (make($_POST['curr_pass']) === $_SESSION['pw'])) {
+        header('Location: ' . 'changepassword' . '&info=wrongPassword');
+        return;
+    }
+    // update data -> itt kell javÌtani
+    $pdo = getConnection();
+    $statement = $pdo->prepare("UPDATE users SET password = ? WHERE user_name = ?");
+    $statement->execute([
+        make($_POST['curr_pass']), //itt van vmi
+        $_SESSION['username']
+    ]);
 }
 
 // ezt m√©g ki kell tapasztalni!
