@@ -51,7 +51,7 @@ function compileTemplate($filePath, $params = []): string
 
 function notFoundHandler()
 {
-    echo "Oldal nem tal·lhatÛ";
+    echo "Oldal nem tal√°lhat√≥";
 }
 
 function isLoggedIn(): bool
@@ -110,13 +110,15 @@ function changepassword()
         header('Location: ' . 'changepassword' . '&info=wrongPassword');
         return;
     }
-    // update data -> itt kell javÌtani
+    // update data -> itt kell javÔøΩtani
     $pdo = getConnection();
     $statement = $pdo->prepare("UPDATE users SET password = ? WHERE user_name = ?");
     $statement->execute([
-        make($_POST['curr_pass']), //itt van vmi
+        make($_POST['password']),
         $_SESSION['username']
     ]);
+    $_SESSION['pw'] = make($_POST['password']);
+    header('Location: ' . '/');
 }
 
 // ezt m√©g ki kell tapasztalni!
