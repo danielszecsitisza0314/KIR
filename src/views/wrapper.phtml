@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KIR</title>
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
-	integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+	integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,6 +19,7 @@
 	href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
 <script type="text/javascript" src="../public/function.js"></script>
+<link rel="stylesheet" type="text/css" href="/public/style.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
 	integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw=="
@@ -31,16 +32,14 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
-	integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"
+	integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"
 	integrity="sha512-efAcjYoYT0sXxQRtxGY37CKYmqsFVOIwMApaEbrxJr4RwqVVGw8o+Lfh/+59TU07+suZn1BWq4fDl5fdgyCNkw=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- <script src='../public/datepicker-hu.js' type='text/javascript'></script>-->
-<link rel="stylesheet" type="text/css" href="public/style.css">
-<script type="text/javascript" src="public/function.js"></script>
 </head>
 <body class="">
 	<div class="row" style="background-color: #214263;">
@@ -60,12 +59,6 @@
 			<form action="logout" method="POST">
 				<button type="submit" class="btn btn-sm btn-danger m-2">
 					Kijelentkezés <i class="bi bi-box-arrow-left"></i>
-				</button>
-			</form>
-			<?php else : ?>
-			<form action="logout" method="POST">
-				<button type="submit" class="btn btn-sm btn-success m-2">
-					Bejelentkezés <i class="bi bi-box-arrow-left"></i>
 				</button>
 			</form>
 			<?php endif; ?> 

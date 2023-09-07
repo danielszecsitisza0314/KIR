@@ -1,0 +1,50 @@
+<div class="modal fade" id="creatuser" tabindex="-1"
+	aria-labelledby="modal1Label111" aria-hidden="true"
+	data-bs-backdrop="static">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title" id="asd">Jelszó módosítása</h3>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Bezárás"></button>
+			</div>
+			<div class="modal-body">
+				<form id="passmodify" action="changepassword" method="POST">
+					<div class="form-group" id="erre">
+						<label class="control-label">Jelenlegi jelszó</label> <input
+							type="password" class="form-control" name="curr_pass"
+							id="curr_pass" required autocomplete="off"> <label
+							class="control-label">Új jelszó (min. 6 karakter)</label> <br> <input
+							type="password" class="form-control" name="password"
+							id="password" required pattern="(?=.*\d)(?=.*[a-z]).{6,}"
+							title="Az új jelszónak minimum 6 karaktert, betût és számokat tartalmaznia kell!"
+							autocomplete="off"> <label class="control-label">Új jelszó ismét
+							(min. 6 karakter)</label> <br> <input type="password"
+							class="form-control" name="password_again" id="password_again"
+							required pattern="(?=.*\d)(?=.*[a-z]).{6,}"
+							title="Az új jelszónak minimum 6 karaktert, betût és számokat tartalmaznia kell!"
+							autocomplete="off"
+							oninput='password_again.setCustomValidity(password_again.value != password.value ? "Az jelszók nem egyeznek meg!" : "");
+							password.setCustomValidity(curr_pass.value != password.value ? "" : "A jelszó nem lehet azonos a régivel!")'>
+					</div>
+					<div class="modal-footer">
+						<input type="submit" value="Jelszó módosítása"
+							class="btn btn-primary" />
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal" onclick="location.reload(true);">Vissza</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+</script>

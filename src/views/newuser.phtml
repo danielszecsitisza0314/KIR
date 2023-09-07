@@ -1,0 +1,71 @@
+<div class="modal fade" id="addUser" tabindex="-1"
+	aria-labelledby="modal1Label" aria-hidden="true"
+	data-bs-keyboard="false" data-bs-backdrop="static">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title" id="modal1Label">Regisztráció</h3>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<!-- Modális tartalom -->
+				<form id="new" action="newuseradd" method="POST">
+					<div class="form-group">
+						<label class="control-label">Felhasználó név</label> <input
+							type="text" class="form-control" name="userName" id="userName"
+							required autocomplete="off"> <label class="control-label">Teljes
+							név</label> <input type="text" class="form-control"
+							name="fullName" id="fullName" required autocomplete="off"> <label
+							class="control-label">Email cím</label> <input type="text"
+							class="form-control" name="email" id="email" required
+							autocomplete="off"> <label class="control-label">Járás
+							kiválasztása</label> <select id="list_jaras" name="list_jaras"
+							class="form-select" required>
+							<option value="" disabled selected hidden>-- Kérem válasszon --</option>
+            <?php
+            $pdo = getConnection();
+            $statement = $pdo->prepare("SELECT * FROM branchinfo");
+            $statement->execute();
+            $list = $statement->fetchAll();
+            foreach ($list as $output) {
+                echo "<option>" . $output['branch_name'] . "</option>";
+            }
+            ?>
+        				</select> <label class="control-label">Felhasználó típus
+							kiválasztása</label> <select id="list_accounttype"
+							name="list_accounttype" class="form-select" required>
+							<option value="" disabled selected hidden>-- Kérem válasszon --</option>
+							<option>Felhasználó</option>
+							<option>Rendszergazda</option>
+						</select>
+						<label class="control-label">NFA jogosultság</label> <select id="NFA"
+							name="NFA" class="form-select" required>
+							<option value="" disabled selected hidden>-- Kérem válasszon --</option>
+							<option>Igen</option>
+							<option>Nem</option>
+						</select>
+						<label class="control-label">GINOP jogosultság</label> <select id="GINOP"
+							name="GINOP" class="form-select" required>
+							<option value="" disabled selected hidden>-- Kérem válasszon --</option>
+							<option>Igen</option>
+							<option>Nem</option>
+						</select>
+						<label class="control-label">TOP jogosultság</label> <select id="TOP"
+							name="TOP" class="form-select" required>
+							<option value="" disabled selected hidden>-- Kérem válasszon --</option>
+							<option>Igen</option>
+							<option>Nem</option>
+						</select>
+					</div>
+				
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary">Regisztráció</button>
+				<button type="button" class="btn btn-secondary"
+					data-bs-dismiss="modal" onclick="location.reload(true);">Vissza</button>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>

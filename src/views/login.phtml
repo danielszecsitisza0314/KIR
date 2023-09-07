@@ -1,27 +1,67 @@
-<?php
-header('Content-Type: text/html; charset=iso-8859-2');
-?>
+<style>
+container {
+	width: 100%;
+	white-space: nowrap;
+}
 
+div.popup-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.2);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+div.popup-container div.popup {
+	background-color: #f0f0f0;
+	width: 350px;
+	border-radius: 5px;
+	padding: 20px 25px 30px 25px;
+}
+
+div.popup-container div.popup h2 {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 30px;
+	color: #30475e;
+}
+</style>
 <div class="popup-container" id="login-popup">
 	<div class="popup">
 		<h2>
-			<span>BejelentkezÈs</span>
-			<button type="reset" onclick="popup('login-popup')" class="close"
-				style="border: none; cursor: default; font-size: 18px; font-weight: 550; color: #797775;">X</button>
+			<span>Bejelentkez√©s</span>
 		</h2>
-		<form action="mainmenu" method="POST">
+		<form action="/login" method="POST">
+		<?php if (isset($_SESSION['checkPassword'])) { ?>
+		<?php if ($_SESSION['checkPassword'] === 'invalidData') : ?>
+			<div class="alert alert-danger">
+                                Sikertelen bejelentkez√©s!
+           </div>
+       	<?php endif ?>
+       	<?php if ($_SESSION['checkPassword'] === 'accountIsNotActive') : ?>
+			<div class="alert alert-danger">
+                                Nem akt√≠v a felhaszn√°l√≥!
+           </div>
+       	<?php endif ?>
+       	<?php  } ?>
 			<div class="input-group">
-				<input type="text" placeholder="Felhaszn·lÛ nÈv" name="username"
-					class="form-control">
+				<input type="text" placeholder="Felhaszn√°l√≥ n√©v" name="username"
+					class="form-control" value="<?php if (isset($_SESSION['username'])) { echo $_SESSION['username']; }?>">
 			</div>
+			<br>
 			<div class="input-group">
-				<input type="password" placeholder="JelszÛ" name="pw"
+				<input type="password" placeholder="Jelsz√≥" name="pw"
 					class="form-control">
 			</div>
 			<br>
-			<button type="submit" class="btn btn-info">BejelentkezÈs</button>
+			<button type="submit" name="sendButton" class="btn btn-info">Bejelentkez√©s</button>
 		</form>
 	</div>
 </div>
-
-

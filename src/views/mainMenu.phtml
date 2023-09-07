@@ -1,23 +1,23 @@
 <?php
-header('Content-Type: text/html; charset=iso-8859-2');
 require_once 'passwordchange.phtml';
+require_once 'newuser.phtml';
 $menus = [
-    'Ellátás',
+    'EllÃ¡tÃ¡s',
     'NFA',
     'GINOP',
     'TOP',
-    'Ügyfél törzs',
-    'Munkáltatói törzs'
+    'ÃœgyfÃ©l tÃ¶rzs',
+    'MunkÃ¡ltatÃ³i tÃ¶rzs'
 ];
 $NFAsubmenus = [
     'EHT',
     'NYDM'
 ];
 ?>
-<!--  fõmenü -->
+<!--  fÃµmenÃ¼ -->
 <nav class="navbar navbar-expand-xxl bg-light">
 	<div class="container-fluid">
-		<a class="navbar-brand" style="cursor: default;">Fõmenü</a>
+		<a class="navbar-brand" style="cursor: default;">FÃµmenÃ¼</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -82,10 +82,10 @@ $NFAsubmenus = [
                 		<?= $menu;?>
                 	</a>
 					<ul class="dropdown-menu">
-						<li class="nav-item"><a class="dropdown-item" href="client.php">Új
-								Ügyfél</a></li>
-						<li class="nav-item"><a class="dropdown-item" href="#">Ügyfél
-								adatok karbantartása</a></li>
+						<li class="nav-item"><a class="dropdown-item" href="client.php">Ãšj
+								ÃœgyfÃ©l</a></li>
+						<li class="nav-item"><a class="dropdown-item" href="#">ÃœgyfÃ©l
+								adatok karbantartÃ¡sa</a></li>
 					</ul></li>
               	<?php } elseif ($menu == $menus[5]) { ?>
               	<li class="nav-item dropdown"><a
@@ -95,27 +95,27 @@ $NFAsubmenus = [
                 	</a>
 					<ul class="dropdown-menu">
 						<li class="nav-item"><a class="dropdown-item"
-							href="newemployer.php">Új munkáltató</a></li>
-						<li class="nav-item"><a class="dropdown-item" href="#">Munkáltatói
-								adatok karbantartása</a></li>
+							href="newemployer.php">Ãšj munkÃ¡ltatÃ³</a></li>
+						<li class="nav-item"><a class="dropdown-item" href="#">MunkÃ¡ltatÃ³i
+								adatok karbantartÃ¡sa</a></li>
 					</ul></li>
 						<?php
         }
         ?>
                  	<?php } ?>
                 <li class="nav-item"><a href=""
-					class=" btn rounded-3 add-new-client-btn" id=""
-					data-bs-toggle="modal" data-bs-target="#changepassword">Jelszó
-						módosítása</a></li>
+					class=" btn rounded-3 add-new-client-btn" id="dsa"
+					data-bs-toggle="modal" data-bs-target="#changepassword">JelszÃ³
+						mÃ³dosÃ­tÃ¡sa</a></li>
 			</ul>
 		</div>
-	</div>
-	<!--  admin menü -->
+		</div>
+	<!--  admin menÃ¼ -->
 	<?php if($_SESSION['accounttype'] === "Rendszergazda"): ?>
 	<nav class="navbar navbar-expand-xl bg-light"
 		style="brand-hover-color: #214263">
 		<div class="container">
-			<a class="navbar-brand">Admin menü</a>
+			<a class="navbar-brand">Admin menÃ¼</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -124,15 +124,17 @@ $NFAsubmenus = [
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent1">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+					<a href="" class=" btn rounded-3 add-new-client-btn" id="asd" data-bs-toggle="modal" data-bs-target="#addUser">Ãšj felhasznÃ¡lnÃ³ hozzÃ¡adÃ¡sa</a>
+					</li>
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
-						href="register.php">Új felhasználnó hozzáadása</a></li>
-					<li class="nav-item"><a class="nav-link active" aria-current="page"
-						href="update.php">Felhasználok adatmódosítása</a></li>
+						href="update.php">FelhasznÃ¡lok adatmÃ³dosÃ­tÃ¡sa</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 </nav>
+
 <?php else: ?>
 </nav>
 <?php
@@ -141,5 +143,10 @@ endif;
 
 var_dump($_COOKIE);
 var_dump($_SESSION['accounttype']);
+var_dump($_SESSION['username']);
 var_dump($_SESSION['pw']);
+var_dump($_SESSION['active']);
+var_dump($_SESSION['checkPassword']);
 ?>
+
+
