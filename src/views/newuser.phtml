@@ -9,6 +9,7 @@
 					aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
+			<p class="status"></p>
 				<!-- ModÃ¡lis tartalom -->
 				<form id="new" action="newuseradd" method="POST">
 					<div class="form-group">
@@ -61,7 +62,8 @@
 				
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary">RegisztrÃ¡ciÃ³</button>
+				<button type="button" id="submitUser" class="btn btn-primary"
+							data-dismiss="static" onclick="submitUserForm()">RegisztrÃ¡ciÃ³</button>
 				<button type="button" class="btn btn-secondary"
 					data-bs-dismiss="modal" onclick="location.reload(true);">Vissza</button>
 			</div>
@@ -69,3 +71,45 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+function submitUserForm(){
+	var userName = $('#userName').val();
+    var fullName = $('#fullName').val();
+    var email = $('#email').val();
+    var list_jaras = $('#list_jaras').val();
+    var list_accounttype = $('#list_accounttype').val();
+    var NFA = $('#NFA').val();
+    var GINOP = $('#GINOP').val();
+    var TOP = $('#TOP').val();
+        $.ajax({
+            type:'POST',
+            url:'/newuseradd',
+            data:{
+            	// az elsõ, amelyik adatot átviszi a szerver oldalra
+            	// a második pedig a var-os adat
+            	userName: userName,
+            	fullName: fullName,
+            	email: email,
+            	list_jaras: list_jaras,
+            	list_accounttype: list_accounttype,
+            	NFA: NFA,
+            	GINOP: GINOP,
+            	TOP: TOP
+    			},
+            beforeSend: function () {
+                $('.submitUser').attr("disabled","disabled");
+                $('.modal-body').css('opacity', '.5');
+            },
+            success:function(msg){
+            console.log(msg)
+                if(msg == 'ok'){
+                    $('.status').html('<div class="alert alert-success">Sikeres regisztráció!</div>');
+                }else{
+                    $('.status').html('<div class="alert alert-danger">Már van ilyen felhasználó névvel regisztrált ügyintézõ!</div>');
+                }
+                $('.submitUser').removeAttr("disabled");
+                $('.modal-body').css('opacity', '');
+            }
+        });
+    }
+</script>

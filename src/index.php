@@ -141,11 +141,10 @@ function register()
     ]);
     $user = $statement->fetch(PDO::FETCH_ASSOC);
     if ($user) {
-        header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=regisztracioSikertelen');
+        $userCheck = 'no';
+        echo $userCheck;
         return;
-    } elseif ($_POST["user_name"] === "" || $_POST["full_name"] === "" || $_POST["email"] === "" || $_POST["government_office"] === "" || $_POST["account_type"] === "" || $_POST["NFA"] === "" || $_POST["GINOP"] === "" || $_POST["TOP"] === "") {
-        header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=regisztracioSikertelen');
-        return;
+        //header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=regisztracioSikertelen');
     } else {
         $statement = $pdo->prepare("INSERT INTO users (user_name, full_name, email, password, government_office, account_type, active, NFA, GINOP, TOP, first_login) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $statement->execute([
@@ -161,8 +160,10 @@ function register()
             $_POST['TOP'],
             'Igen'
         ]);
+        $userCheck = 'ok';
+        echo $userCheck;
+        return;
     }
-    header('Location: ' . '/');
 }
 
 function logoutHandler()
