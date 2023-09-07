@@ -101,8 +101,15 @@ function submitUserForm(){
                 $('.modal-body').css('opacity', '.5');
             },
             success:function(msg){
-            console.log(msg)
                 if(msg == 'ok'){
+                	$('#userName').val("");
+					$('#fullName').val("");
+					$('#email').val("");
+					$('#list_jaras').val("");
+					$('#list_accounttype').val("");
+					$('#NFA').val("");
+					$('#GINOP').val("");
+					$('#TOP').val("");
                     $('.status').html('<div class="alert alert-success">Sikeres regisztráció!</div>');
                 }else{
                     $('.status').html('<div class="alert alert-danger">Már van ilyen felhasználó névvel regisztrált ügyintézõ!</div>');
